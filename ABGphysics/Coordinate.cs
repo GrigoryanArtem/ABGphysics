@@ -11,6 +11,8 @@ namespace ABGphysics
         private double _x;
         private double _y;
 
+        #region Constructors
+
         public Coordinate()
         {
             _x = 0;
@@ -22,6 +24,10 @@ namespace ABGphysics
             _x = x;
             _y = y;
         }
+
+        #endregion
+
+        #region Auto implemented properties
 
         public double X
         {
@@ -47,6 +53,10 @@ namespace ABGphysics
             }
         }
 
+        #endregion
+
+        #region Override methods
+
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -65,6 +75,15 @@ namespace ABGphysics
             return _x.GetHashCode() ^ _y.GetHashCode();
         }
 
+        public override string ToString()
+        {
+            return String.Format("{0} {1}", _x, _y);
+        }
+
+        #endregion
+
+        #region Arithmetic operators
+
         public static Coordinate operator +(Coordinate a, Coordinate b)
         {
             return new Coordinate(a.X + b.X, a.Y + b.Y);
@@ -79,6 +98,10 @@ namespace ABGphysics
         {
             return new Coordinate(-a.X, -a.Y);
         }
+
+        #endregion
+
+        #region Comparison operators
 
         public static bool operator ==(Coordinate a, Coordinate b)
         {
@@ -95,5 +118,7 @@ namespace ABGphysics
         {
             return !(a == b);
         }
+
+        #endregion
     }
 }
