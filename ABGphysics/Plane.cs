@@ -11,12 +11,15 @@ namespace ABGphysics
         private Coordinate _minCoordinate;
         private Coordinate _maxCoordinate;
 
+        private List<Subjects.Subject> _subjects;
+
         #region Constructors
 
         public Plane(Coordinate minCoordinate, Coordinate maxCoordinate)
         {
             _minCoordinate = minCoordinate;
             _maxCoordinate = maxCoordinate;
+            _subjects = new List<Subjects.Subject>();
         }
 
         #endregion
@@ -63,9 +66,36 @@ namespace ABGphysics
             }
         }
 
+        public List<Subjects.Subject> Subjects
+        {
+            get
+            {
+                return _subjects;
+            }
+        }
+
         #endregion
 
         #region Main methods
+
+        public void AddSubject(Subjects.Subject subject)
+        {
+            _subjects.Add(subject);
+        }
+
+        public void Update(uint fps)
+        {
+            foreach (var subject in _subjects)
+            {
+                if (subject.Position.X <= _minCoordinate.X || subject.Position.X >= _maxCoordinate.X)
+                    subject.Speed.Angle = subject.Speed.Angle.ReverseForY();
+
+                if (subject.Position.Y <= _minCoordinate.Y || subject.Position.Y >= _maxCoordinate.Y)
+                    subject.Speed.Angle = subject.Speed.Angle.ReverseForX();
+
+                subject.Update(fps);
+            }
+        }
 
         #endregion
     }

@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(_mainForm));
             this._mainSplitContainer = new System.Windows.Forms.SplitContainer();
-            this._menuMain = new System.Windows.Forms.MenuStrip();
             this._mainPictureBox = new System.Windows.Forms.PictureBox();
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this._menuMain = new System.Windows.Forms.MenuStrip();
             this._menuView = new System.Windows.Forms.ToolStripMenuItem();
             this._menuControlPanel = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this._mainSplitContainer)).BeginInit();
             this._mainSplitContainer.Panel1.SuspendLayout();
             this._mainSplitContainer.Panel2.SuspendLayout();
             this._mainSplitContainer.SuspendLayout();
-            this._menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._mainPictureBox)).BeginInit();
+            this._menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // _mainSplitContainer
@@ -56,20 +58,9 @@
             // _mainSplitContainer.Panel2
             // 
             this._mainSplitContainer.Panel2.Controls.Add(this.richTextBox);
-            this._mainSplitContainer.Size = new System.Drawing.Size(729, 345);
-            this._mainSplitContainer.SplitterDistance = 607;
+            this._mainSplitContainer.Size = new System.Drawing.Size(936, 345);
+            this._mainSplitContainer.SplitterDistance = 656;
             this._mainSplitContainer.TabIndex = 0;
-            // 
-            // _menuMain
-            // 
-            this._menuMain.BackColor = System.Drawing.SystemColors.ControlDark;
-            this._menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._menuView});
-            this._menuMain.Location = new System.Drawing.Point(0, 0);
-            this._menuMain.Name = "_menuMain";
-            this._menuMain.Size = new System.Drawing.Size(729, 24);
-            this._menuMain.TabIndex = 1;
-            this._menuMain.Text = "_menuMain";
             // 
             // _mainPictureBox
             // 
@@ -78,10 +69,31 @@
             this._mainPictureBox.Location = new System.Drawing.Point(0, 0);
             this._mainPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this._mainPictureBox.Name = "_mainPictureBox";
-            this._mainPictureBox.Size = new System.Drawing.Size(607, 345);
+            this._mainPictureBox.Size = new System.Drawing.Size(656, 345);
             this._mainPictureBox.TabIndex = 0;
             this._mainPictureBox.TabStop = false;
+            this._mainPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this._mainPictureBox_MouseDown);
             this._mainPictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this._mainPictureBox_MouseMove);
+            // 
+            // richTextBox
+            // 
+            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.richTextBox.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(276, 81);
+            this.richTextBox.TabIndex = 0;
+            this.richTextBox.Text = "";
+            // 
+            // _menuMain
+            // 
+            this._menuMain.BackColor = System.Drawing.SystemColors.ControlDark;
+            this._menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._menuView});
+            this._menuMain.Location = new System.Drawing.Point(0, 0);
+            this._menuMain.Name = "_menuMain";
+            this._menuMain.Size = new System.Drawing.Size(936, 24);
+            this._menuMain.TabIndex = 1;
+            this._menuMain.Text = "_menuMain";
             // 
             // _menuView
             // 
@@ -100,33 +112,31 @@
             this._menuControlPanel.Text = "Панель управления";
             this._menuControlPanel.Click += new System.EventHandler(this.панельУправленияToolStripMenuItem_Click);
             // 
-            // richTextBox
+            // timer1
             // 
-            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.richTextBox.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(118, 81);
-            this.richTextBox.TabIndex = 0;
-            this.richTextBox.Text = "";
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 50;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // _mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(729, 369);
+            this.ClientSize = new System.Drawing.Size(936, 369);
             this.Controls.Add(this._mainSplitContainer);
             this.Controls.Add(this._menuMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "_mainForm";
             this.Text = "ABGphysics";
+            this.Load += new System.EventHandler(this._mainForm_Load);
             this._mainSplitContainer.Panel1.ResumeLayout(false);
             this._mainSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._mainSplitContainer)).EndInit();
             this._mainSplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._mainPictureBox)).EndInit();
             this._menuMain.ResumeLayout(false);
             this._menuMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._mainPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,6 +150,7 @@
         private System.Windows.Forms.ToolStripMenuItem _menuView;
         private System.Windows.Forms.ToolStripMenuItem _menuControlPanel;
         private System.Windows.Forms.RichTextBox richTextBox;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

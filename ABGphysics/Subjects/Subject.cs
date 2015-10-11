@@ -19,6 +19,14 @@ namespace ABGphysics.Subjects
             }
         }
 
+        public Speed @Speed
+        {
+            get
+            {
+                return _speed;
+            }
+        }
+
         public abstract void Update(uint fps);
     }
 }

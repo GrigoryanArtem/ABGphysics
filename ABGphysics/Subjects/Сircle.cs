@@ -8,6 +8,20 @@ namespace ABGphysics.Subjects
 {
     class Сircle : Subject
     {
+        private uint _radius;
+
+        public uint Radius
+        {
+            get
+            {
+                return _radius;
+            }
+            set
+            {
+                _radius = value;
+            }
+        }
+
         public Сircle(Coordinate position, Speed speed)
         {
             _position = position;
